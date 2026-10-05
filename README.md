@@ -244,3 +244,115 @@ Running it again overwrites exports with the same filenames.
 
 
 🔗 [GitHub Profile](https://github.com/preyashgandhi00-stack)
+
+
+
+
+---
+
+## 🔮 Week 2 — Financial Forecasting
+
+### 📌 Project Overview
+
+In Week 2, I built a basic forecasting workflow using historical Bank of America (BAC) daily stock data. The goal was to forecast the **Closing Price (USD)** and compare two simple forecasting methods on a chronological test period.
+
+This project demonstrates how to prepare time series data, preserve the order of observations, create a holdout test set, evaluate forecast errors, and explain the results and limitations.
+
+> **Data note:** The historical dataset ends on **December 31, 2025**. The forecasts in this project use that historical data and should not be interpreted as live market forecasts or investment advice.
+
+### 🎯 Objective
+
+- Forecast Bank of America’s daily closing price.
+- Compare a **Naive Forecast** with a **20-Session Average Forecast**.
+- Evaluate both methods using **Mean Absolute Error (MAE)** and **Root Mean Squared Error (RMSE)**.
+- Generate a simple forecast for the next 60 trading sessions after the available historical data.
+
+### 🗂️ Dataset and Preparation
+
+The analysis uses the cleaned Bank of America stock dataset from Week 1. The `Date` column was converted to a datetime format, and the rows were sorted chronologically before selecting `Date` and `Close` for forecasting.
+
+| Item | Details |
+|---|---|
+| Forecast target | Closing Price (USD) |
+| Historical records | 13,329 |
+| Historical period | February 21, 1973 – December 31, 2025 |
+| Training records | 13,269 |
+| Test records | 60 |
+| Training period ends | October 6, 2025 |
+| Test period | October 7 – December 31, 2025 |
+
+The last 60 observations were kept as the test set. The training data came before the test data, so the time order was preserved.
+
+### 🧪 Forecasting Methods
+
+**1. Naive Forecast**
+
+The Naive model uses the last closing price in the training data as the forecast for every date in the test period.
+
+- Forecast value: **$50.13**
+- This is a simple baseline for comparison.
+
+**2. 20-Session Average Forecast**
+
+This model uses the average closing price from the last 20 training observations as a constant forecast for every date in the test period.
+
+- Forecast value: **$50.95**
+- The 20 observations represent roughly one trading month.
+- The test period was not used to calculate this forecast value.
+
+Both methods produce a flat forecast line. They do not update using actual prices from the test period.
+
+### 📊 Model Performance
+
+| Model | MAE (USD) | RMSE (USD) |
+|---|---:|---:|
+| Naive Forecast | 2.86 | 3.28 |
+| 20-Session Average | **2.23** | **2.64** |
+
+For this 60-observation test period, the 20-Session Average had lower MAE and RMSE than the Naive Forecast. This means its errors were smaller on average during this test window. It does not guarantee that it will perform better in other periods.
+
+- **MAE** shows the average absolute difference between actual and forecast prices.
+- **RMSE** also measures forecast error, while giving larger errors more weight.
+
+### 📈 Actual vs Forecast
+
+The chart compares actual closing prices with the two constant forecasts during the test period.
+
+![Bank of America actual closing prices compared with the Naive and 20-Session Average forecasts](Week2_01_Actual_vs_Forecast.png)
+
+The actual closing price moved during the test period, while both forecasts stayed flat. The chart makes it easier to see where the forecasts were above or below the actual prices.
+
+### 🔭 Forecast Beyond the Historical Data
+
+Using the last 20 available closing prices in the dataset, the average forecast was approximately **$54.85**. This value was repeated for the next 60 trading-session steps.
+
+- Forecast origin: **December 31, 2025**
+- Forecast horizon: **60 trading sessions**
+- Forecast value: **approximately $54.85 per session**
+
+This is a basic constant forecast. The future forecast has not been evaluated against actual prices after the historical data ends.
+
+### 📁 Week 2 Files
+
+- [`Week2_Forecasting.ipynb`](Week2_Forecasting.ipynb) — notebook with data preparation, forecasts, evaluation, and analysis.
+- [`Week2_Forecasting_Report.docx`](Week2_Forecasting_Report.docx) — written forecasting report.
+- [`Week2_Test_Results.csv`](Week2_Test_Results.csv) — actual test-period prices and forecast results.
+- [`Week2_Model_Comparison.csv`](Week2_Model_Comparison.csv) — MAE and RMSE comparison.
+- [`Week2_Future_Forecast.csv`](Week2_Future_Forecast.csv) — 60-session forecast output.
+- [`Week2_01_Actual_vs_Forecast.png`](Week2_01_Actual_vs_Forecast.png) — actual-versus-forecast chart.
+
+### ⚠️ Limitations
+
+- Only 60 observations were used to evaluate the models.
+- Both forecasting methods produce constant forecasts and cannot capture price trends or daily fluctuations.
+- The analysis uses the closing price only and does not include company fundamentals, market news, or other external factors.
+- The 60-session forecast is a simple baseline, not a prediction of guaranteed future performance.
+- The dataset ends on December 31, 2025, so this analysis does not represent current market data.
+
+### ✅ Key Takeaway
+
+The 20-Session Average produced lower errors than the Naive Forecast during the selected test period. This project provided practice in time series preparation, chronological validation, forecast evaluation, and communicating the limits of a basic model.
+
+---
+
+**Tools used:** Python · Pandas · Matplotlib · Jupyter Notebook

@@ -353,6 +353,6 @@ This is a basic constant forecast. The future forecast has not been evaluated ag
 
 The 20-Session Average produced lower errors than the Naive Forecast during the selected test period. This project provided practice in time series preparation, chronological validation, forecast evaluation, and communicating the limits of a basic model.
 
----
+----
 
 **Tools used:** Python · Pandas · Matplotlib · Jupyter Notebook

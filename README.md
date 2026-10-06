@@ -356,3 +356,79 @@ The 20-Session Average produced lower errors than the Naive Forecast during the 
 -----
 
 **Tools used:** Python · Pandas · Matplotlib · Jupyter Notebook
+
+
+---
+
+## 🛡️ Week 3 — Historical Risk Analysis
+
+### 📌 Project Overview
+
+This project assesses historical market-price, downside, data-quality, and forecasting risks using Bank of America (BAC) daily stock data. It calculates return volatility, identifies large-loss sessions, measures historical drawdown, reviews flagged records, and proposes practical monitoring and mitigation strategies.
+
+> **Scope:** This is an analysis of risks visible in the historical stock-price dataset. It does not assess Bank of America’s internal credit, operational, cybersecurity, or regulatory risks. The results describe historical observations; they do not predict future performance or provide investment advice.
+
+### 📊 Dataset and Risk Snapshot
+
+| Measure | Finding |
+|---|---:|
+| Historical observations | 13,329 |
+| Period covered | February 21, 1973 – December 31, 2025 |
+| Daily return volatility | 2.36% |
+| Annualized historical volatility | 37.52% |
+| Sessions with negative returns | 5,931 |
+| Sessions with losses of 5% or more | 225 |
+| Worst observed daily return | −28.97% on January 20, 2009 |
+| Maximum observed drawdown | −93.45% |
+| Zero-volume rows | 6 |
+| Closing-price outlier flags | 66 |
+
+Annualized volatility is estimated from daily return standard deviation using 252 trading sessions per year. The −5% daily-loss threshold is an exploratory analysis threshold, not an official risk limit.
+
+### 📈 Rolling Volatility
+
+The chart shows annualized volatility over rolling 30-session windows. Spikes indicate periods when recent daily returns fluctuated more; the chart by itself does not identify the cause.
+
+![Bank of America rolling 30-session annualized volatility](Week3_01_Rolling_Volatility.png)
+
+### ⚠️ Risk Assessment and Mitigation
+
+| Risk | Evidence | Potential impact | Mitigation strategy |
+|---|---|---|---|
+| **Market-price volatility — High impact** | Annualized historical volatility was 37.52%. | Sharp price movements may create significant short-term losses and make simple forecasts less reliable. | Monitor volatility, set exposure limits, diversify portfolios, and run stress scenarios. |
+| **Downside risk — Very high impact** | 225 sessions had losses of at least 5%; the worst observed daily return was −28.97%. | A sudden decline can materially reduce the value of a stock position. | Monitor large-loss days, review position sizing, and test severe downside scenarios. |
+| **Drawdown risk — Very high impact** | Maximum observed drawdown was −93.45%, from October 5, 2007, to March 6, 2009. | A prolonged peak-to-trough decline can result in substantial capital loss and a slow recovery. | Track drawdowns, review exposure, and assess portfolios against severe historical scenarios. |
+| **Data-quality and adjustment risk — High impact** | The dataset contains 6 zero-volume rows and 66 closing-price outlier flags. It does not include an adjusted closing-price field. | Unverified records or corporate actions may distort return, volatility, or drawdown calculations. | Validate flagged records with a reliable source, check split/dividend adjustments, and document corrections before modelling. |
+| **Forecast-model risk — High impact** | Week 2 used constant baseline forecasts and one 60-session test period. The 20-Session Average recorded MAE of $2.23 and RMSE of $2.64 on that test period. | A simple model may not capture changing market conditions or sudden movements. Test-period accuracy may not continue in future periods. | Backtest over multiple periods, compare suitable models, review errors regularly, and treat forecasts as uncertain estimates. |
+
+Impact ratings are qualitative and reflect the historical evidence in this analysis. They are not estimates of the probability of future losses. Outlier and zero-volume flags are review signals; they do not prove that a record is incorrect.
+
+### 🔎 Methodology
+
+- Sorted observations by date and calculated daily percentage returns from closing prices.
+- Measured daily return volatility and estimated annualized volatility with √252.
+- Calculated drawdown by comparing each closing price with the highest previous close.
+- Counted daily returns of −5% or lower as large-loss sessions for this exploratory review.
+- Reviewed existing zero-volume and closing-price outlier flags without deleting flagged rows.
+
+### ⚠️ Limitations
+
+- The analysis covers one stock and cannot measure portfolio diversification or concentration.
+- The dataset does not provide adjusted closing prices, so corporate-action effects may influence some calculations.
+- Historical volatility and drawdown are not guarantees of future risk.
+- The Week 2 baseline forecasts were tested on one 60-session period and do not model all market conditions.
+- This dataset does not contain company financial statements, loan-level data, or internal risk information.
+
+### 📁 Week 3 Files
+
+- [`Week3_Risk_Analysis.ipynb`](Week3_Risk_Analysis.ipynb) — notebook with risk calculations and analysis.
+- [`Week3_Risk_Analysis_Report.docx`](Week3_Risk_Analysis_Report.docx) — written risk analysis report.
+- [`Week3_01_Rolling_Volatility.png`](Week3_01_Rolling_Volatility.png) — rolling-volatility chart.
+
+### 📚 Data Source
+
+[Bank of America Corp Stock Data — Kaggle](https://www.kaggle.com/datasets/isaaclopgu/bank-of-america-corp-stock-data-daily-updated)
+
+---
+
+**Tools used:** Python · Pandas · Matplotlib · Jupyter Notebook

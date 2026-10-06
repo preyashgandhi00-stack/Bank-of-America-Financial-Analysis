@@ -432,3 +432,19 @@ Impact ratings are qualitative and reflect the historical evidence in this analy
 ---
 
 **Tools used:** Python · Pandas · Matplotlib · Jupyter Notebook
+
+
+## 📊 Week 4: Hypothesis Testing
+
+Tested whether Bank of America’s historical mean daily stock return was different from zero.
+
+- **Method:** Two-sided one-sample t-test
+- **Observations:** 13,328 daily returns
+- **Mean daily return:** 0.054831%
+- **t-statistic:** 2.6783
+- **p-value:** 0.0074
+- **95% confidence interval:** 0.0147% to 0.0950%
+
+At the 5% significance level, the null hypothesis was rejected. The results provide evidence that the historical mean daily return in this dataset was positive and different from zero. This finding describes the historical sample and does not predict future returns. The test also assumes independent observations, while financial returns may be dependent over time.
+
+**Files:** `Week4_Hypothesis_Testing.ipynb` · `Week4_Hypothesis_Testing_Report.docx`

@@ -448,3 +448,36 @@ Tested whether Bank of America’s historical mean daily stock return was differ
 At the 5% significance level, the null hypothesis was rejected. The results provide evidence that the historical mean daily return in this dataset was positive and different from zero. This finding describes the historical sample and does not predict future returns. The test also assumes independent observations, while financial returns may be dependent over time.
 
 **Files:** `Week4_Hypothesis_Testing.ipynb` · `Week4_Hypothesis_Testing_Report.docx`
+
+
+## 📊 Week 5: Data Visualization with Power BI
+
+Created two interactive dashboard pages to explore Bank of America’s historical stock performance and data-quality flags.
+
+### 🏦 Stock Performance
+- Latest, highest, and lowest closing-price KPI cards.
+- Daily closing-price trend.
+- Yearly average closing prices.
+- Yearly total trading volume.
+
+![Stock Performance Dashboard](Week5_Stock_Performance.png)
+
+### 🔎 Risk & Data Quality
+- Closing-price outlier and zero-volume record counts.
+- Yearly average daily high–low price range.
+- Closing-price outliers grouped by year.
+- Zero-volume records grouped by year.
+
+![Risk and Data Quality Dashboard](Week5_Risk_Data_Quality.png)
+
+### 💡 Key Findings
+- With all years selected, the latest available closing price is $55.01, the highest is $56.25, and the lowest is approximately $0.27.
+- All 66 flagged closing-price outliers occur in 2025.
+- Six zero-volume records appear in earlier years.
+- Synchronized year slicers filter both dashboard pages.
+
+These visualizations describe historical data. Outlier flags do not automatically indicate errors, and the high–low range measures dollar price movements rather than percentage volatility.
+
+### 📁 Deliverables
+- [Power BI Report](Week5_Data_Visualization.pbix)
+- [Detailed Word Report](Week5_Data_Visualization_Report.docx)

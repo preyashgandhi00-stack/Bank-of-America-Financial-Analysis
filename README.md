@@ -481,3 +481,23 @@ These visualizations describe historical data. Outlier flags do not automaticall
 ### 📁 Deliverables
 - [Power BI Report](Week5_Data_Visualization.pbix)
 - [Detailed Word Report](Week5_Data_Visualization_Report.docx)
+
+## 📝 Week 6 — Final Reporting and Presentation
+
+The final report brings together the work completed across all five analysis stages, connecting historical stock patterns with forecast performance, risk measures, statistical findings, and interactive dashboards.
+
+### 📌 Report Contents
+- **Week 1:** Data acquisition, cleaning, and exploratory analysis
+- **Week 2:** Closing-price forecasting and benchmark evaluation
+- **Week 3:** Historical volatility, downside events, and drawdown
+- **Week 4:** Hypothesis testing of mean daily price returns
+- **Week 5:** Power BI dashboards for stock performance and data quality
+- **Overall findings:** Insights, limitations, and recommendations for future analysis
+
+### 💡 Key Takeaway
+A positive historical average daily price return coexisted with substantial volatility and severe drawdowns. The findings highlight the importance of validating source data, evaluating forecasts across multiple periods, and interpreting average performance alongside downside risk.
+
+### 📄 Final Report
+[Download the Final Project Report](Week6_Final_Project_Report.docx)
+
+> The analysis covers historical data through 31 December 2025. Results do not guarantee future performance, and adjustments for dividends and stock splits remain unverified.
